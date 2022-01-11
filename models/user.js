@@ -1,11 +1,12 @@
-const config = require("config")
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Joi =  require("joi");
 const JoiPassword = require('joi-password')
 const PasswordComplexity = require("joi-password-complexity");
+const jwtPrivateKey = process.env.JWTPRIVATEKEY;
 
 const userSchema = new mongoose.Schema({
+
     email:{
         type:String,
         required:true,
@@ -35,7 +36,7 @@ userSchema.methods.generateAuthToken = function(){
         phone:this.phone
 
     },
-    config.get("jwtPrivateKey")
+    jwtPrivateKey
     );
     return token;
 }

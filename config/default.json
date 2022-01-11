@@ -1,7 +1,0 @@
-{
-    "db":"mongodb://localhost/assignmentapp",
-    "port":"3001",
-    "jwtPrivateKey":"encryptionKey",
-    "requiresAuth": true
-
-}

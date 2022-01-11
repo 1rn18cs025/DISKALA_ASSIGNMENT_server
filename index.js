@@ -1,11 +1,11 @@
+require("dotenv").config();
 const express = require('express');
 const app =express()
-const config = require("config");
 
 
 require('./startup/routes')(app);
 require('./startup/db')();
+const PORT = process.env.PORT;
 
-const port =config.get("port")
-const server = app.listen(port,()=>console.log(`listning on port ${port}`));
+const server = app.listen(PORT,()=>console.log(`listning on port ${PORT}`));
 module.exports = server
