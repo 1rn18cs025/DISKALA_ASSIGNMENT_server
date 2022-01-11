@@ -54,7 +54,7 @@ function validateUser(user){
             symbol: 1,
             requirementCount: 4
         }),
-        phone: Joi.string().length(10).pattern(/^[0-9]+$/).required(),
+        phone: Joi.string().length(10).pattern(/^[0-9]+$/).messages({'string.pattern.base': `Phone Number must contain only digits.`}).required(),
     });
     return Schema.validate(user);
 }

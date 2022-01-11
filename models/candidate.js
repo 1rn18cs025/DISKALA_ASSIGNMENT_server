@@ -51,7 +51,7 @@ function validateCandidate(candidate){
         result: Joi.string().required(),
         email: Joi.string().email().required(),
         age: Joi.number().required(),
-        pincode: Joi.string().pattern(/^[0-9]+$/).length(6).required(),
+        pincode: Joi.string().pattern(/^[0-9]+$/).messages({'string.pattern.base': `Pincode must contain only digits.`}).length(6).required(),
         dob: Joi.date().required(),
         
     });
