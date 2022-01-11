@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const Joi =  require("joi");
-const JoiPassword = require('joi-password')
-const PasswordComplexity = require("joi-password-complexity");
 
 const candidateSchema = new mongoose.Schema({
     name:{
@@ -31,8 +28,11 @@ const candidateSchema = new mongoose.Schema({
         required:true,
     },
     pincode:{
-        type:Number,
+        type:String,
         required:true,
+        minlength:6,
+        maxlength:6
+        
     },
     email:{
         type:String,
@@ -51,7 +51,7 @@ function validateCandidate(candidate){
         result: Joi.string().required(),
         email: Joi.string().email().required(),
         age: Joi.number().required(),
-        pincode: Joi.number().required(),
+        pincode: Joi.string().pattern(/^[0-9]+$/).length(6).required(),
         dob: Joi.date().required(),
         
     });
